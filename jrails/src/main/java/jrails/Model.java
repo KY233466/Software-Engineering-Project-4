@@ -425,7 +425,8 @@ public class Model {
             List<List<String>> lines = getLinesOtherThan(this.instanceId);
 
             if (lines == null) {
-                throw new UnsupportedOperationException();
+                System.out.println("Raise exception");
+                throw new Exception("tried to destroy unsaved data");
             }
 
             Model.reset();

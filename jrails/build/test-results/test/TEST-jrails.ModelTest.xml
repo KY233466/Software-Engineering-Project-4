@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="jrails.ModelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-22T02:13:37" hostname="Katies-MBP.home" time="0.032">
+<testsuite name="jrails.ModelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-22T02:22:30" hostname="Katies-MBP.home" time="0.03">
   <properties/>
-  <testcase name="id" classname="jrails.ModelTest" time="0.032"/>
+  <testcase name="id" classname="jrails.ModelTest" time="0.03"/>
   <system-out><![CDATA[0
 getAllLines
 file doesn't exist

@@ -169,7 +169,7 @@ public class Model {
             
             List<List<String>> lines = getLine(id_T, path);
 
-            if (lines == null) {
+            if (lines == null || lines.size() == 0) {
                 return null;
             }
 

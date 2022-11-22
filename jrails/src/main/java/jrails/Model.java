@@ -157,11 +157,13 @@ public class Model {
             T o = c.getConstructor().newInstance();
 
             List<List<String>> lines = getLine(id_T);
-            System.out.println("lines.size()");
-            System.out.println(lines.size());
+
             if (lines == null) {
                 return null;
             }
+
+            System.out.println("lines.size()");
+            System.out.println(lines.size());
             List<Field> classes = new ArrayList<Field>();
 
             for (Field field : fields) {
@@ -385,7 +387,7 @@ public class Model {
         }
 
         if (!found) {
-            throw new UnsupportedOperationException();
+            return null;
         }
 
         return lines;
@@ -421,6 +423,10 @@ public class Model {
         System.out.println("destroy:");
         try {
             List<List<String>> lines = getLinesOtherThan(this.instanceId);
+            
+            if (lines == null) {
+                throw new UnsupportedOperationException();
+            }
 
             Model.reset();
 

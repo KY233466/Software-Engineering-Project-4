@@ -8,14 +8,6 @@ public class JRouter {
     public static HashMap<List<String>, List<Object>> map = new HashMap<>();
 
     public void addRoute(String verb, String path, Class clazz, String method) {
-        // System.out.println("In addRoute");
-        // System.out.println(verb);
-        // System.out.println(path);
-        // System.out.println(clazz.getName());
-        // System.out.println(method);
-        // System.out.println("----");
-
-
         List<Object> data = new ArrayList<>();
         List<String> key = new ArrayList<>();
         key.add(verb);
@@ -30,11 +22,6 @@ public class JRouter {
     // Returns "clazz#method" corresponding to verb+URN
     // Null if no such route
     public String getRoute(String verb, String path) {
-        // System.out.println("In getRoute");
-        // System.out.println(verb);
-        // System.out.println(path);
-        // System.out.println("----");
-
         List<String> key = new ArrayList<>();
         key.add(verb);
         key.add(path);
@@ -61,7 +48,7 @@ public class JRouter {
             String result = getRoute(verb, path);
 
             if (result == null) {
-                throw new UnsupportedOperationException();
+                return null;
             }
 
             String[] data = result.split("#");

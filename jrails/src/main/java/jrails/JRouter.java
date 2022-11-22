@@ -48,8 +48,11 @@ public class JRouter {
             String result = getRoute(verb, path);
 
             if (result == null) {
+                System.out.println("return null");
                 return null;
             }
+
+            System.out.println("not null");
 
             String[] data = result.split("#");
 

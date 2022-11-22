@@ -152,6 +152,7 @@ public class Model {
                     lines.add(values);
                 }
             }
+            System.out.println("---");
             // System.out.println("-------");
             // System.out.println("     ");
         } catch (Exception e) {
@@ -163,6 +164,7 @@ public class Model {
 
     public static <T> T find(Class<T> c, int id_T){
         try {
+            System.out.println("find:");
             Field[] fields = c.getFields();
             T o = c.getConstructor().newInstance();
 
@@ -212,6 +214,7 @@ public class Model {
     private static Object buildObject(Object o, List<Field> classes, String[] data, int length) {
 
         try {
+            System.out.println("buildObject:");
             for (int i = 0; i < classes.size(); i++) {
                 Field curr = classes.get(i);
                 String name = curr.toString();
@@ -244,6 +247,7 @@ public class Model {
     private static String[] processLine(String s, int length) {
 
         String[] result = new String[length];
+        System.out.println("processLine:");
 
         int start1 = s.indexOf("\",\"");
         String outStr = s.substring(start1 + 1, s.length());
@@ -315,6 +319,7 @@ public class Model {
 
     public static <T> List<T> all(Class<T> c) {
         try {
+            System.out.println("all:");
             List<T> result = new ArrayList<T>();
 
             Field[] fields = c.getFields();
@@ -361,6 +366,7 @@ public class Model {
     }
 
     private static List<List<String>> getLinesOtherThan(int id_target) {
+        System.out.println("getLinesOtherThan:");
         String file = "data.csv";
         String delimiter = "','";
         String line;
@@ -390,6 +396,7 @@ public class Model {
     }
 
     private static String[] processALine(String s, int length) {
+        System.out.println("processALine:");
 
         String[] result = new String[length];
 
@@ -415,6 +422,7 @@ public class Model {
     }
 
     public void destroy() {
+        System.out.println("destroy:");
         try {
             List<List<String>> lines = getLinesOtherThan(this.instanceId);
 

@@ -20,23 +20,24 @@ public class JRouter {
         System.out.println(path);
         System.out.println(clazz.getName());
         System.out.println(method);
-        System.out.println("   ");
 
         data.add(clazz.getName());
         data.add(method);
 
         map.put(key, data);
+        System.out.println(map.size());
+        System.out.println("   ");
     }
 
     // Returns "clazz#method" corresponding to verb+URN
     // Null if no such route
     public String getRoute(String verb, String path) {
 
-        System.out.println("   ");
-        System.out.println("getRoute");
-        System.out.println(verb);
-        System.out.println(path);
-        System.out.println("   ");
+        // System.out.println("   ");
+        // System.out.println("getRoute");
+        // System.out.println(verb);
+        // System.out.println(path);
+        // System.out.println("   ");
         List<String> key = new ArrayList<>();
         key.add(verb);
         key.add(path);
@@ -55,10 +56,27 @@ public class JRouter {
     // Call the appropriate controller method and
     // return the result
     public Html route(String verb, String path, Map<String, String> params) {
+        System.out.println("In route. Print all");
+        System.out.println(map.size());
+
+        // System.out.println("    ");
+        // for (Map.Entry<List<String>, List<Object>> entry : map.entrySet()) {
+        //     List<String> key = entry.getKey();
+        //     System.out.println(key.get(0));
+        //     System.out.println(key.get(1));
+        //     List<Object> value = entry.getValue();
+        //     System.out.println(value.get(0));
+        //     System.out.println(value.get(2));
+        //     System.out.println("   ");
+        // }
+        // System.out.println("In route. done");
+        // System.out.println("   ");
+        
+        
         String result = getRoute(verb, path);
 
         if (result == null) {
-            throw new UnsupportedOperationException();
+            throw new IllegalStateException();
         }
 
         try {

@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
 import java.net.InetSocketAddress;
 import java.net.URLDecoder;
 import java.util.HashMap;
@@ -23,7 +22,7 @@ public class JServer {
             server.createContext("/", new Handler(r));
             server.setExecutor(null);
             System.out.println("Starting server...point your web browser to http://localhost:8000");
-	    System.out.flush();
+            System.out.flush();
             server.start();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -38,7 +37,7 @@ public class JServer {
         }
 
         public void handle(HttpExchange t) throws IOException {
-            String response = "";
+            String response;
 
             System.out.println("Request: " + t.getRequestMethod() + " " + t.getRequestURI());
 
@@ -59,15 +58,16 @@ public class JServer {
             if (result.indexOf("=") != -1) {
                 for (String q : result.split("&")) {
                     int i = q.indexOf("=");
-                    params.put(URLDecoder.decode(q.substring(0, i), "UTF-8"), URLDecoder.decode(q.substring(i + 1), "UTF-8"));
+                    params.put(URLDecoder.decode(q.substring(0, i), "UTF-8"),
+                            URLDecoder.decode(q.substring(i + 1), "UTF-8"));
                 }
             }
 
-            // try {
+            try {
                 response = r.route(t.getRequestMethod(), t.getRequestURI().getPath(), params).toString();
-            // } catch (UnsupportedOperationException e) {
+            } catch (UnsupportedOperationException e) {
                 System.out.println("Routing caused unsupported operation exception.");
-		System.out.flush();
+                System.out.flush();
                 if (t.getRequestURI().getPath().equals("/test")) {
                     response = "<h1>Success!</h1><p>The server is running.</p>";
                 } else if (t.getRequestURI().getPath().equals("/form")) {
@@ -79,31 +79,10 @@ public class JServer {
                         System.out.println(k + " = " + params.get(k));
                     }
                     response = "Unsupported Operation Exception; see console for request details";
-		    System.out.flush();
+                    System.out.flush();
                 }
 
-            // } catch (NoSuchMethodException e) {
-            //     // TODO Auto-generated catch block
-            //     e.printStackTrace();
-            // } catch (SecurityException e) {
-            //     // TODO Auto-generated catch block
-            //     e.printStackTrace();
-            // } catch (InstantiationException e) {
-            //     // TODO Auto-generated catch block
-            //     e.printStackTrace();
-            // } catch (IllegalAccessException e) {
-            //     // TODO Auto-generated catch block
-            //     e.printStackTrace();
-            // } catch (IllegalArgumentException e) {
-            //     // TODO Auto-generated catch block
-            //     e.printStackTrace();
-            // } catch (InvocationTargetException e) {
-            //     // TODO Auto-generated catch block
-            //     e.printStackTrace();
-            // } catch (ClassNotFoundException e) {
-            //     // TODO Auto-generated catch block
-            //     e.printStackTrace();
-            // }
+            }
             t.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
             t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();

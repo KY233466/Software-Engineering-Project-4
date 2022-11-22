@@ -155,7 +155,7 @@ public class Model {
             // System.out.println("-------");
             // System.out.println("     ");
         } catch (Exception e) {
-            throw new UnsupportedOperationException();
+            return null;
         }
 
         return lines;
@@ -167,6 +167,9 @@ public class Model {
             T o = c.getConstructor().newInstance();
 
             List<List<String>> lines = getLine(id_T);
+            if (lines == null) {
+                return null;
+            }
             List<Field> classes = new ArrayList<Field>();
 
             for (Field field : fields) {

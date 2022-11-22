@@ -383,7 +383,7 @@ public class Model {
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            return null;
         }
 
         if (!found) {
@@ -423,7 +423,7 @@ public class Model {
         System.out.println("destroy:");
         try {
             List<List<String>> lines = getLinesOtherThan(this.instanceId);
-            
+
             if (lines == null) {
                 throw new UnsupportedOperationException();
             }

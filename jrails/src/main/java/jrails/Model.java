@@ -432,13 +432,14 @@ public class Model {
     public void destroy() {
         System.out.println("destroy:");
         String path = this.getClass().getName().toString() + ".csv";
+
+        if (this.instanceId == 0) {
+            System.out.println("Raise exception");
+            throw new UnsupportedOperationException();
+        }
+
         try {
             List<List<String>> lines = getLinesOtherThan(this.instanceId, path);
-
-            if (lines == null) {
-                System.out.println("Raise exception");
-                throw new Exception("tried to destroy unsaved data");
-            }
 
             Model.reset();
 

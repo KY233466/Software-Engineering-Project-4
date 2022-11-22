@@ -55,17 +55,13 @@ public class JRouter {
     // Call the appropriate controller method and
     // return the result
     public Html route(String verb, String path, Map<String, String> params) {
-        // System.out.println("In route");
-        // System.out.println(verb);
-        // System.out.println(path);
+        String result = getRoute(verb, path);
+
+        if (result == null) {
+            throw new UnsupportedOperationException();
+        }
 
         try {
-            String result = getRoute(verb, path);
-
-            if (result == null) {
-                System.out.println("null");
-                throw new UnsupportedOperationException();
-            }
 
             System.out.println("not null");
             // File ff = new File("data.csv");

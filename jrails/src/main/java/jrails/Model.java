@@ -137,10 +137,12 @@ public class Model {
         String delimiter = "','";
         String line;
         List<List<String>> lines = new ArrayList<List<String>>();
-        // System.out.println("cvs file contains:");
+        System.out.println("getLine:");
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             line = br.readLine();
+            System.out.println("count: ");
+            System.out.println(line);
 
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
@@ -153,7 +155,20 @@ public class Model {
             // System.out.println("-------");
             // System.out.println("     ");
         } catch (Exception e) {
-            System.out.println(e);
+            File f = new File(file);
+            try {
+                f.createNewFile();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            System.out.println("file doesn't exist");
+            String[] countS = new String[1];
+            List<String> lol = new ArrayList<String>();
+            lol.add("1");
+            lines.add(lol);
+            countS[0] = "1";
+            write(countS);
         }
 
         return lines;

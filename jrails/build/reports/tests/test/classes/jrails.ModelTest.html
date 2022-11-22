@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.026s</div>
+<div class="counter">0.032s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">0%</div>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,66 +61,13 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
+<a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Tests</a>
-</li>
-<li>
-<a href="#tab2">Standard output</a>
+<a href="#tab1">Standard output</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="id"></a>
-<h3 class="failures">id</h3>
-<span class="code">
-<pre>java.lang.IllegalStateException
-	at jrails.ModelTest.id(ModelTest.java:67)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
-	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -131,13 +78,13 @@
 </tr>
 </thead>
 <tr>
-<td class="failures">id</td>
-<td class="failures">0.026s</td>
-<td class="failures">failed</td>
+<td class="success">id</td>
+<td class="success">0.032s</td>
+<td class="success">passed</td>
 </tr>
 </table>
 </div>
-<div id="tab2" class="tab">
+<div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
 <pre>0
@@ -152,55 +99,91 @@ save
 [2]
 ----write
 [1, Programming &quot;Languages&quot;: Build,Prove,  and Compare, Norman Ramsey, 999]
+     
 ----1
+all:
 getAllLines
 file exists
 &quot;2&quot;
-??
-while
+&quot;1&quot;,&quot;Programming &quot;Languages&quot;: Build,Prove,  and Compare&quot;,&quot;Norman Ramsey&quot;,&quot;999&quot;
      
 in all contains
 &quot;2&quot;
+[&quot;1&quot;,&quot;Programming &quot;Languages&quot;: Build,Prove,  and Compare&quot;,&quot;Norman Ramsey&quot;,&quot;999&quot;]
+processLine:
 [Programming &quot;Languages&quot;: Build,Prove,  and Compare, Norman Ramsey, 999, 1]
+buildObject:
      
 0
 getAllLines
 file exists
 &quot;2&quot;
-??
-while
+&quot;1&quot;,&quot;Programming &quot;Languages&quot;: Build,Prove,  and Compare&quot;,&quot;Norman Ramsey&quot;,&quot;999&quot;
      
      
 save
 2
 ----write
 [3]
+processALine:
 ----write
 [1, Programming &quot;Languages&quot;: Build,Prove,  and Compare, Norman Ramsey, 999]
 ----write
 [2, Book n, Loln, 2339]
+     
+all:
 getAllLines
 file exists
 &quot;3&quot;
-??
-while
-while
+&quot;1&quot;,&quot;Programming &quot;Languages&quot;: Build,Prove,  and Compare&quot;,&quot;Norman Ramsey&quot;,&quot;999&quot;
+&quot;2&quot;,&quot;Book n&quot;,&quot;Loln&quot;,&quot;2339&quot;
      
 in all contains
 &quot;3&quot;
+[&quot;1&quot;,&quot;Programming &quot;Languages&quot;: Build,Prove,  and Compare&quot;,&quot;Norman Ramsey&quot;,&quot;999&quot;]
+processLine:
 [Programming &quot;Languages&quot;: Build,Prove,  and Compare, Norman Ramsey, 999, 1]
+buildObject:
+[&quot;2&quot;,&quot;Book n&quot;,&quot;Loln&quot;,&quot;2339&quot;]
+processLine:
 [Book n, Loln, 2339, 2]
+buildObject:
      
+destroy:
+getLinesOtherThan:
+&quot;3&quot;
+&quot;3&quot;
+----write
+[3]
+processALine:
 ----write
 [1, Programming &quot;Languages&quot;: Build,Prove,  and Compare, Norman Ramsey, 999]
+all:
 getAllLines
 file exists
+&quot;3&quot;
 &quot;1&quot;,&quot;Programming &quot;Languages&quot;: Build,Prove,  and Compare&quot;,&quot;Norman Ramsey&quot;,&quot;999&quot;
-??
      
 in all contains
-&quot;1&quot;,&quot;Programming &quot;Languages&quot;: Build,Prove,  and Compare&quot;,&quot;Norman Ramsey&quot;,&quot;999&quot;
+&quot;3&quot;
+[&quot;1&quot;,&quot;Programming &quot;Languages&quot;: Build,Prove,  and Compare&quot;,&quot;Norman Ramsey&quot;,&quot;999&quot;]
+processLine:
+[Programming &quot;Languages&quot;: Build,Prove,  and Compare, Norman Ramsey, 999, 1]
+buildObject:
      
+find:
+getLine:
+1
+count: 
+&quot;3&quot;
+&quot;1&quot;,&quot;Programming &quot;Languages&quot;: Build,Prove,  and Compare&quot;,&quot;Norman Ramsey&quot;,&quot;999&quot;
+^^^^found
+    
+lines.size()
+1
+processLine:
+buildObject:
+   
 </pre>
 </span>
 </div>
@@ -212,7 +195,7 @@ in all contains
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.5.1</a> at Nov 21, 2022, 7:00:52 PM</p>
+<a href="http://www.gradle.org">Gradle 7.5.1</a> at Nov 21, 2022, 9:13:38 PM</p>
 </div>
 </div>
 </body>

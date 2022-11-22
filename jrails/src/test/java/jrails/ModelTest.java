@@ -47,24 +47,19 @@ public class ModelTest {
         b1.num_copies = 2339;
         b1.save();
 
-        //  throw new IllegalStateException();
-
-        // file = new File("data.csv");
-        // result = Files.deleteIfExists(file.toPath());
-
         // System.out.println("----2");
 
         bs = Model.all(Book.class);
-
-        // for (Book book : bs) {
-        //     System.out.println(book.id());
-        // }
 
         b1.destroy();
 
         bs = Model.all(Book.class);
 
-        throw new IllegalStateException();
+        Book b3 = Model.find(Book.class, 1);
+        assertThat(b3.id(), equalTo(1));
+        // System.out.println()
+
+        // throw new IllegalStateException();
 
         // System.out.println("----2");
 

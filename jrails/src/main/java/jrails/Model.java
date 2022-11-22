@@ -124,6 +124,7 @@ public class Model {
         String line;
         List<List<String>> lines = new ArrayList<List<String>>();
         System.out.println("getLine:");
+        System.out.println(id_target);
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             line = br.readLine();
@@ -134,11 +135,12 @@ public class Model {
                 System.out.println(line);
 
                 if (line.substring(0, line.indexOf(',')).contains(String.valueOf(id_target))) {
+                    System.out.println("^^^^found");
                     List<String> values = Arrays.asList(line.split(delimiter));
                     lines.add(values);
                 }
             }
-            System.out.println("---");
+            System.out.println("    ");
             // System.out.println("-------");
             // System.out.println("     ");
         } catch (Exception e) {
@@ -155,6 +157,8 @@ public class Model {
             T o = c.getConstructor().newInstance();
 
             List<List<String>> lines = getLine(id_T);
+            System.out.println("lines.size()");
+            System.out.println(lines.size());
             if (lines == null) {
                 return null;
             }
@@ -272,13 +276,13 @@ public class Model {
             // System.out.println("count");
             String bbbb = br.readLine();
             System.out.println(bbbb);
-            System.out.println("??");
+            // System.out.println("??");
             count.add(bbbb);
             lines.add(count);
 
             while ((line = br.readLine()) != null) {
-                System.out.println("while");
-                // System.out.println(line);
+                // System.out.println("while");
+                System.out.println(line);
                 List<String> values = Arrays.asList(line.split(delimiter));
                 lines.add(values);
             }
@@ -335,7 +339,7 @@ public class Model {
 
             for (int i = 0; i < lines.size(); i++) {
                 // System.out.println("run");
-                // System.out.println(lines.get(i).toString());
+                System.out.println(lines.get(i).toString());
                 String[] data = processLine(lines.get(i).toString(), length);
                 System.out.println(Arrays.toString(data));
                 buildObject(o, classes, data, length);
@@ -358,10 +362,15 @@ public class Model {
         String delimiter = "','";
         String line;
         List<List<String>> lines = new ArrayList<List<String>>();
+        List<String> count = new ArrayList<String>();
         boolean found = false;
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             line = br.readLine();
+            System.out.println(line);
+            count.add(line);
+            lines.add(count);
+
             while ((line = br.readLine()) != null) {
                 if (!line.substring(0, line.indexOf(',')).contains(String.valueOf(id_target))) {
                     List<String> values = Arrays.asList(line.split(delimiter));
@@ -416,6 +425,13 @@ public class Model {
             Model.reset();
 
             int length = this.getClass().getDeclaredFields().length + 1;
+
+            String storedCount = lines.remove(0).get(0);
+            System.out.println(storedCount);
+            storedCount = storedCount.replace("\"", "");
+            String[] newCounts = new String[1];
+            newCounts[0] = storedCount;
+            write(newCounts);
 
             for (int i = 0; i < lines.size(); i++) {
                 String[] data = processALine(lines.get(i).toString(), length);

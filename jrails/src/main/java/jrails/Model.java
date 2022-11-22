@@ -9,9 +9,6 @@ public class Model {
 
     public int instanceId = 0;
 
-    // Model() {
-    // }
-
     public void save() {
         try {
             int IDreserved = this.instanceId;
@@ -31,15 +28,9 @@ public class Model {
             System.out.println("save");
             System.out.println(lines.size());
 
-            // System.out.println("lines length");
-            // System.out.println(lines.size());
-
-            // String storedCount = Arrays.toString(lines.remove(0).toArray());
             String storedCount = lines.remove(0).get(0);
             storedCount = storedCount.replace("\"", "");
-            // storedCount = storedCount.replace("\"]", "");
 
-            // System.out.println(storedCount);
             String[] newCounts = new String[1];
 
             if (IDreserved != 0) {
@@ -48,8 +39,6 @@ public class Model {
                 newCounts[0] = String.valueOf(Integer.parseInt(storedCount) + 1);
             }
 
-            // System.out.println(Arrays.toString(newCounts));
-            // System.out.println("?");
             write(newCounts);
 
             int length = this.getClass().getDeclaredFields().length + 1;
@@ -77,9 +66,6 @@ public class Model {
 
             String[] full = new String[listS.size() + 1];
 
-            // System.out.println("hmm");
-            // System.out.println(IDreserved);
-
             if (IDreserved != 0) {
                 this.instanceId = IDreserved;
             } else {
@@ -95,7 +81,7 @@ public class Model {
             }
 
             write(full);
-
+            System.out.println("     ");
         } catch (Exception e) {
 
         }
@@ -185,8 +171,9 @@ public class Model {
 
             String[] data = processLine(lines.get(0).toString(), c.getDeclaredFields().length + 1);
 
-            buildObject(o, classes, data, c.getDeclaredFields().length);
-            return o;
+            Object obj = buildObject(o, classes, data, c.getDeclaredFields().length);
+            System.out.println("   ");
+            return (T) obj;
 
         } catch (InstantiationException e1) {
             // TODO Auto-generated catch block

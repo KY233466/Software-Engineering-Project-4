@@ -47,33 +47,35 @@ public class JRouter {
         try {
             String result = getRoute(verb, path);
 
-            if (result == null) {
-                System.out.println("return null");
-                throw new UnsupportedOperationException();
-                // System.out.println("return null");
-                // return null;
-            }
+            throw new UnsupportedOperationException();
 
-            System.out.println("not null");
+            // if (result == null) {
+            //     System.out.println("return null");
+            //     throw new UnsupportedOperationException();
+            //     // System.out.println("return null");
+            //     // return null;
+            // }
 
-            String[] data = result.split("#");
+            // System.out.println("not null");
 
-            Class<?> c = Class.forName(data[0]);
-            String method = data[1];
+            // String[] data = result.split("#");
 
-            // System.out.println(c.getName());
-            // System.out.println(method);
-            // System.out.println("----");
+            // Class<?> c = Class.forName(data[0]);
+            // String method = data[1];
 
-            // Class<?> parameterType = params.getClass();
+            // // System.out.println(c.getName());
+            // // System.out.println(method);
+            // // System.out.println("----");
 
-            Method target = c.getMethod(method, Map.class);
+            // // Class<?> parameterType = params.getClass();
 
-            Object o = c.getConstructor().newInstance();
+            // Method target = c.getMethod(method, Map.class);
 
-            Object html = target.invoke(o, params);
+            // Object o = c.getConstructor().newInstance();
 
-            return (Html) html;
+            // Object html = target.invoke(o, params);
+
+            // return (Html) html;
 
         } catch (Exception e) {
 

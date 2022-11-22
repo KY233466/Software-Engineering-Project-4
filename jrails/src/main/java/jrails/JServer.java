@@ -63,9 +63,9 @@ public class JServer {
                 }
             }
 
-            try {
+            // try {
                 response = r.route(t.getRequestMethod(), t.getRequestURI().getPath(), params).toString();
-            } catch (UnsupportedOperationException e) {
+            // } catch (UnsupportedOperationException e) {
                 System.out.println("Routing caused unsupported operation exception.");
 		System.out.flush();
                 if (t.getRequestURI().getPath().equals("/test")) {
@@ -82,28 +82,28 @@ public class JServer {
 		    System.out.flush();
                 }
 
-            } catch (NoSuchMethodException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (SecurityException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IllegalArgumentException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            // } catch (NoSuchMethodException e) {
+            //     // TODO Auto-generated catch block
+            //     e.printStackTrace();
+            // } catch (SecurityException e) {
+            //     // TODO Auto-generated catch block
+            //     e.printStackTrace();
+            // } catch (InstantiationException e) {
+            //     // TODO Auto-generated catch block
+            //     e.printStackTrace();
+            // } catch (IllegalAccessException e) {
+            //     // TODO Auto-generated catch block
+            //     e.printStackTrace();
+            // } catch (IllegalArgumentException e) {
+            //     // TODO Auto-generated catch block
+            //     e.printStackTrace();
+            // } catch (InvocationTargetException e) {
+            //     // TODO Auto-generated catch block
+            //     e.printStackTrace();
+            // } catch (ClassNotFoundException e) {
+            //     // TODO Auto-generated catch block
+            //     e.printStackTrace();
+            // }
             t.getResponseHeaders().set("Content-Type", "text/html; charset=UTF-8");
             t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();

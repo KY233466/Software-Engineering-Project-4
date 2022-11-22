@@ -52,34 +52,40 @@ public class JRouter {
 
     // Call the appropriate controller method and
     // return the result
-    public Html route(String verb, String path, Map<String, String> params) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException {
+    public Html route(String verb, String path, Map<String, String> params) {
         // System.out.println("In route");
         // System.out.println(verb);
         // System.out.println(path);
 
-        String result = getRoute(verb, path);
+        try {
+            String result = getRoute(verb, path);
 
-        if (result == null) {
-            throw new UnsupportedOperationException();
+            if (result == null) {
+                throw new UnsupportedOperationException();
+            }
+
+            String[] data = result.split("#");
+
+            Class<?> c = Class.forName(data[0]);
+            String method = data[1];
+
+            // System.out.println(c.getName());
+            // System.out.println(method);
+            // System.out.println("----");
+
+            // Class<?> parameterType = params.getClass();
+
+            Method target = c.getMethod(method, Map.class);
+
+            Object o = c.getConstructor().newInstance();
+
+            Object html = target.invoke(o, params);
+
+            return (Html) html;
+
+        } catch (Exception e) {
+
         }
-
-        String[] data = result.split("#");
-
-        Class<?> c = Class.forName(data[0]);
-        String method = data[1];
-
-        // System.out.println(c.getName());
-        // System.out.println(method);
-        // System.out.println("----");
-
-        // Class<?> parameterType = params.getClass();
-
-        Method target = c.getMethod(method, Map.class);
-
-        Object o = c.getConstructor().newInstance();
-
-        Object html = target.invoke(o, params);
-
-        return (Html) html;
+        return null;
     }
 }

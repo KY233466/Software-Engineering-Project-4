@@ -204,27 +204,36 @@ public class Model {
         return null;
     }
 
-    private static Object buildObject(Object o, List<Field> classes, String[] data, int length)
-            throws IllegalArgumentException, IllegalAccessException {
-        for (int i = 0; i < classes.size(); i++) {
-            Field curr = classes.get(i);
-            String name = curr.toString();
+    private static Object buildObject(Object o, List<Field> classes, String[] data, int length) {
 
-            if (name.contains("String")) {
-                if (data[i] != "$$$NULS") {
-                    curr.set(o, data[i]);
+        try {
+            for (int i = 0; i < classes.size(); i++) {
+                Field curr = classes.get(i);
+                String name = curr.toString();
+
+                if (name.contains("String")) {
+                    if (data[i] != "$$$NULS") {
+                        curr.set(o, data[i]);
+                    } else {
+                        curr.set(o, null);
+                    }
+                } else if (name.contains("int")) {
+                    curr.set(o, Integer.valueOf(data[i]));
+                } else if (name.contains("boolean")) {
+                    curr.set(o, Boolean.parseBoolean(data[i]));
                 }
-                else {
-                    curr.set(o, null);
-                }
-            } else if (name.contains("int")) {
-                curr.set(o, Integer.valueOf(data[i]));
-            } else if (name.contains("boolean")) {
-                curr.set(o, Boolean.parseBoolean(data[i]));
             }
-        }
 
-        return o;
+            return o;
+
+        } catch (IllegalArgumentException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return length;
     }
 
     private static String[] processLine(String s, int length) {

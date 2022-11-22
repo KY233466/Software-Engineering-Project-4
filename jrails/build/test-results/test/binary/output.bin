@@ -1,0 +1,72 @@
+0
+getAllLines
+file doesn't exist
+
+----write
+[1]
+     
+save
+1
+
+----write
+[2]
+
+----write
+L[1, Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999]
+----1
+getAllLines
+file exists
+"2"
+??
+while
+     
+in all contains
+"2"
+L[Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999, 1]
+     
+0
+getAllLines
+file exists
+"2"
+??
+while
+     
+     
+save
+2
+
+----write
+[3]
+
+----write
+L[1, Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999]
+
+----write
+[2, Book n, Loln, 2339]
+getAllLines
+file exists
+"3"
+??
+while
+while
+     
+in all contains
+"3"
+L[Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999, 1]
+[Book n, Loln, 2339, 2]
+     
+
+----write
+L[1, Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999]
+getAllLines
+file exists
+O"1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"
+??
+     
+in all contains
+O"1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"
+     
+-------------
+BookView test
+Ò<p><strong>Title:</strong>Programming Languages: Build, Prove, and Compare</p><p><strong>Author:</strong>Norman Ramsey</p><p><strong>Copies?:</strong>999</p><a href="/edit?id=0">Edit</a> | <a href="/">Back</a>
+-------------

@@ -49,7 +49,9 @@ public class JRouter {
 
             if (result == null) {
                 System.out.println("return null");
-                return null;
+                throw new UnsupportedOperationException();
+                // System.out.println("return null");
+                // return null;
             }
 
             System.out.println("not null");

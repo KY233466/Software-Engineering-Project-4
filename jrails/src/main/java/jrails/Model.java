@@ -130,6 +130,7 @@ public class Model {
         List<List<String>> lines = new ArrayList<List<String>>();
         System.out.println("getLine:");
         System.out.println(id_target);
+        System.out.println(path);
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             // System.out.println("getLine:");
@@ -158,11 +159,13 @@ public class Model {
 
     public static <T> T find(Class<T> c, int id_T){
         try {
+            System.out.println("    ");
             System.out.println("find:");
             Field[] fields = c.getFields();
             T o = c.getConstructor().newInstance();
             String path = c.getName().toString() + ".csv";
             System.out.println(path);
+            System.out.println(id_T);
             
             List<List<String>> lines = getLine(id_T, path);
 
@@ -456,6 +459,9 @@ public class Model {
                 String[] data = processALine(lines.get(i).toString(), length);
                 write(data, path);
             }
+
+            System.out.println("^^^done destroy");
+            System.out.println("   ");
 
         } catch (Exception e) {
 

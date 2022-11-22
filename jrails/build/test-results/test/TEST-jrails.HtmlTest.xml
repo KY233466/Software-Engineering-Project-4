@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="jrails.HtmlTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-22T03:18:37" hostname="Katies-MBP.home" time="0.008">
+<testsuite name="jrails.HtmlTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-22T04:02:19" hostname="Katies-MBP.home" time="0.014">
   <properties/>
-  <testcase name="empty" classname="jrails.HtmlTest" time="0.008"/>
+  <testcase name="empty" classname="jrails.HtmlTest" time="0.014"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

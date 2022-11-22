@@ -31,15 +31,15 @@ public class ModelTest {
         // boolean result = Files.deleteIfExists(file.toPath());
         // Files.exists(null, null);
 
-        Book b = new Book();
-        b.title = "Programming \"Languages\": Build,Prove,  and Compare";
-        b.author = "Norman Ramsey";
-        b.num_copies = 999;
-        b.save();
+        // Book b = new Book();
+        // b.title = "Programming \"Languages\": Build,Prove,  and Compare";
+        // b.author = "Norman Ramsey";
+        // b.num_copies = 999;
+        // b.save();
 
-        System.out.println("----1");
+        // System.out.println("----1");
 
-        List<Book> bs = Model.all(Book.class);
+        // List<Book> bs = Model.all(Book.class);
 
         Book b1 = new Book();
         b1.title = "Book n";
@@ -49,21 +49,22 @@ public class ModelTest {
 
         System.out.println("----2");
 
-        bs = Model.all(Book.class);
+        List<Book> bs = Model.all(Book.class);
 
         b1.destroy();
 
+        System.out.println(" ");
         System.out.println("----3");
 
         bs = Model.all(Book.class);
 
-        System.out.println("----4");
+        // System.out.println("----4");
 
-        Book b3 = Model.find(Book.class, 1);
-        assertThat(b3.id(), equalTo(1));
+        // Book b3 = Model.find(Book.class, 1);
+        // assertThat(b3.id(), equalTo(1));
         // System.out.println()
 
-        // throw new IllegalStateException();
+        throw new IllegalStateException();
 
         // System.out.println("----2");
 

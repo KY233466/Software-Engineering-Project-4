@@ -8,18 +8,22 @@ import java.io.*;
 public class Model {
 
     public int instanceId = 0;
+    public static HashMap<Class<?>, String> map = new HashMap<>();
 
     public void save() {
         try {
             int IDreserved = this.instanceId;
             System.out.println(IDreserved);
+            String path = this.getClass().getName().toString() + ".csv";
+            System.out.println(path);
+            map.put(this.getClass(), path);
 
             List<List<String>> lines = new ArrayList<List<String>>();
 
             if (this.instanceId != 0) {
-                lines = getLinesOtherThan(IDreserved);
+                lines = getLinesOtherThan(IDreserved, path);
             } else {
-                lines = getAllLines();
+                lines = getAllLines(path);
             }
 
             Model.reset();
@@ -39,13 +43,13 @@ public class Model {
                 newCounts[0] = String.valueOf(Integer.parseInt(storedCount) + 1);
             }
 
-            write(newCounts);
+            write(newCounts, path);
 
             int length = this.getClass().getDeclaredFields().length + 1;
 
             for (int i = 0; i < lines.size(); i++) {
                 String[] data = processALine(lines.get(i).toString(), length);
-                write(data);
+                write(data, path);
             }
 
             Class<?> c = this.getClass();
@@ -80,18 +84,19 @@ public class Model {
                 full[i] = listS.get(i - 1).toString();
             }
 
-            write(full);
+            write(full, path);
             System.out.println("     ");
         } catch (Exception e) {
 
         }
     }
 
-    private static void write(String[] data) {
+    private static void write(String[] data, String path) {
         try {
             System.out.println("----write");
             System.out.println(Arrays.toString(data));
-            File csvFile = new File("data.csv");
+            // String path = this.getClass().toString() + ".csv";
+            File csvFile = new File(path);
             FileWriter fileWriter = new FileWriter(csvFile, true);
             StringBuilder line = new StringBuilder();
 
@@ -118,8 +123,8 @@ public class Model {
         return this.instanceId;
     }
 
-    private static List<List<String>> getLine(int id_target) {
-        String file = "data.csv";
+    private static List<List<String>> getLine(int id_target, String path) {
+        String file = path;
         String delimiter = "','";
         String line;
         List<List<String>> lines = new ArrayList<List<String>>();
@@ -127,6 +132,7 @@ public class Model {
         System.out.println(id_target);
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            // System.out.println("getLine:");
             line = br.readLine();
             System.out.println("count: ");
             System.out.println(line);
@@ -155,8 +161,10 @@ public class Model {
             System.out.println("find:");
             Field[] fields = c.getFields();
             T o = c.getConstructor().newInstance();
-
-            List<List<String>> lines = getLine(id_T);
+            String path = c.getName().toString() + ".csv";
+            System.out.println(path);
+            
+            List<List<String>> lines = getLine(id_T, path);
 
             if (lines == null) {
                 return null;
@@ -262,9 +270,9 @@ public class Model {
         return result;
     }
 
-    private static List<List<String>> getAllLines() {
+    private static List<List<String>> getAllLines(String path) {
         System.out.println("getAllLines");
-        String file = "data.csv";
+        String file = path;
         String delimiter = "','";
         String line;
         List<List<String>> lines = new ArrayList<List<String>>();
@@ -304,7 +312,7 @@ public class Model {
             lol.add("1");
             lines.add(lol);
             countS[0] = "1";
-            write(countS);
+            write(countS, path);
         }
 
         return lines;
@@ -317,7 +325,9 @@ public class Model {
 
             Field[] fields = c.getFields();
 
-            List<List<String>> lines = getAllLines();
+            String path = c.getName().toString() + ".csv";
+
+            List<List<String>> lines = getAllLines(path);
             List<Field> classes = new ArrayList<Field>();
 
             for (Field field : fields) {
@@ -358,9 +368,9 @@ public class Model {
         return null;
     }
 
-    private static List<List<String>> getLinesOtherThan(int id_target) {
+    private static List<List<String>> getLinesOtherThan(int id_target, String path) {
         System.out.println("getLinesOtherThan:");
-        String file = "data.csv";
+        String file = path;
         String delimiter = "','";
         String line;
         List<List<String>> lines = new ArrayList<List<String>>();
@@ -421,8 +431,9 @@ public class Model {
 
     public void destroy() {
         System.out.println("destroy:");
+        String path = this.getClass().getName().toString() + ".csv";
         try {
-            List<List<String>> lines = getLinesOtherThan(this.instanceId);
+            List<List<String>> lines = getLinesOtherThan(this.instanceId, path);
 
             if (lines == null) {
                 System.out.println("Raise exception");
@@ -438,11 +449,11 @@ public class Model {
             storedCount = storedCount.replace("\"", "");
             String[] newCounts = new String[1];
             newCounts[0] = storedCount;
-            write(newCounts);
+            write(newCounts, path);
 
             for (int i = 0; i < lines.size(); i++) {
                 String[] data = processALine(lines.get(i).toString(), length);
-                write(data);
+                write(data, path);
             }
 
         } catch (Exception e) {
@@ -452,10 +463,11 @@ public class Model {
 
     public static void reset() {
         try {
-            File ff = new File("data.csv");
-            boolean result = Files.deleteIfExists(ff.toPath());
+            for (String path : map.values()) {
+                File ff = new File(path);
+                Files.deleteIfExists(ff.toPath());
+            }
         } catch (IOException e) {
-
         }
     }
 }

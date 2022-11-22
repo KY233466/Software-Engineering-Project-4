@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="jrails.JRouterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-22T02:22:30" hostname="Katies-MBP.home" time="0.013">
+<testsuite name="jrails.JRouterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-22T03:18:37" hostname="Katies-MBP.home" time="0.029">
   <properties/>
-  <testcase name="addRoute" classname="jrails.JRouterTest" time="0.013"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="addRoute" classname="jrails.JRouterTest" time="0.029"/>
+  <system-out><![CDATA[addRoute
+GET
+/
+java.lang.String
+index
+   
+   
+getRoute
+GET
+/
+   
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

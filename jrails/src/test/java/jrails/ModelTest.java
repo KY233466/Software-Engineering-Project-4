@@ -47,13 +47,17 @@ public class ModelTest {
         b1.num_copies = 2339;
         b1.save();
 
-        // System.out.println("----2");
+        System.out.println("----2");
 
         bs = Model.all(Book.class);
 
         b1.destroy();
 
+        System.out.println("----3");
+
         bs = Model.all(Book.class);
+
+        System.out.println("----4");
 
         Book b3 = Model.find(Book.class, 1);
         assertThat(b3.id(), equalTo(1));

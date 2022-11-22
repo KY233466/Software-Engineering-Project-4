@@ -1,6 +1,8 @@
 package jrails;
 
+import java.io.File;
 import java.lang.reflect.*;
+import java.nio.file.Files;
 import java.util.*;
 
 public class JRouter {
@@ -13,6 +15,13 @@ public class JRouter {
         key.add(verb);
         key.add(path);
 
+        System.out.println("addRoute");
+        System.out.println(verb);
+        System.out.println(path);
+        System.out.println(clazz.getName());
+        System.out.println(method);
+        System.out.println("   ");
+
         data.add(clazz.getName());
         data.add(method);
 
@@ -22,6 +31,12 @@ public class JRouter {
     // Returns "clazz#method" corresponding to verb+URN
     // Null if no such route
     public String getRoute(String verb, String path) {
+
+        System.out.println("   ");
+        System.out.println("getRoute");
+        System.out.println(verb);
+        System.out.println(path);
+        System.out.println("   ");
         List<String> key = new ArrayList<>();
         key.add(verb);
         key.add(path);
@@ -47,35 +62,35 @@ public class JRouter {
         try {
             String result = getRoute(verb, path);
 
-            throw new UnsupportedOperationException();
+            if (result == null) {
+                System.out.println("null");
+                throw new UnsupportedOperationException();
+            }
 
-            // if (result == null) {
-            //     System.out.println("return null");
-            //     throw new UnsupportedOperationException();
-            //     // System.out.println("return null");
-            //     // return null;
-            // }
+            System.out.println("not null");
+            // File ff = new File("data.csv");
+            // Files.deleteIfExists(ff.toPath());
 
-            // System.out.println("not null");
+            String[] data = result.split("#");
 
-            // String[] data = result.split("#");
+            Class<?> c = Class.forName(data[0]);
+            String method = data[1];
 
-            // Class<?> c = Class.forName(data[0]);
-            // String method = data[1];
+            // System.out.println(c.getName());
+            // System.out.println(method);
+            // System.out.println("----");
 
-            // // System.out.println(c.getName());
-            // // System.out.println(method);
-            // // System.out.println("----");
+            // Class<?> parameterType = params.getClass();
 
-            // // Class<?> parameterType = params.getClass();
+            Method target = c.getMethod(method, Map.class);
 
-            // Method target = c.getMethod(method, Map.class);
+            Object o = c.getConstructor().newInstance();
 
-            // Object o = c.getConstructor().newInstance();
+            Object html = target.invoke(o, params);
 
-            // Object html = target.invoke(o, params);
+            System.out.println("^^done route");
 
-            // return (Html) html;
+            return (Html) html;
 
         } catch (Exception e) {
 

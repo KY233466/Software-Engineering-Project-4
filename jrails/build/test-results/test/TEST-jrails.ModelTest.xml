@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="jrails.ModelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-22T02:22:30" hostname="Katies-MBP.home" time="0.03">
+<testsuite name="jrails.ModelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-22T03:18:37" hostname="Katies-MBP.home" time="0.077">
   <properties/>
-  <testcase name="id" classname="jrails.ModelTest" time="0.03"/>
+  <testcase name="id" classname="jrails.ModelTest" time="0.077"/>
   <system-out><![CDATA[0
+jrails.Book.csv
 getAllLines
 file doesn't exist
 ----write
@@ -30,6 +31,7 @@ processLine:
 buildObject:
      
 0
+jrails.Book.csv
 getAllLines
 file exists
 "2"
@@ -46,6 +48,7 @@ processALine:
 ----write
 [2, Book n, Loln, 2339]
      
+----2
 all:
 getAllLines
 file exists
@@ -73,6 +76,7 @@ getLinesOtherThan:
 processALine:
 ----write
 [1, Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999]
+----3
 all:
 getAllLines
 file exists
@@ -86,7 +90,9 @@ processLine:
 [Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999, 1]
 buildObject:
      
+----4
 find:
+jrails.Book.csv
 getLine:
 1
 count: 

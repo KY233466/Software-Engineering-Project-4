@@ -1,108 +1,125 @@
-0
-getAllLines
-file doesn't exist
-
+0
+jrails.Book.csv
+getAllLines
+file doesn't exist
+
 ----write
-[1]
-     
-save
-1
-
+[1]
+     
+save
+1
+
 ----write
-[2]
-
+[2]
+
 ----write
-L[1, Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999]
-     
-----1
-all:
-getAllLines
-file exists
-"2"
-O"1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"
-     
-in all contains
-"2"
-Q["1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"]
-processLine:
-L[Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999, 1]
-buildObject:
-     
-0
-getAllLines
-file exists
-"2"
-O"1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"
-     
-     
-save
-2
-
+L[1, Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999]
+     
+----1
+all:
+getAllLines
+file exists
+"2"
+O"1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"
+     
+in all contains
+"2"
+Q["1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"]
+processLine:
+L[Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999, 1]
+buildObject:
+     
+0
+jrails.Book.csv
+getAllLines
+file exists
+"2"
+O"1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"
+     
+     
+save
+2
+
 ----write
-[3]
-processALine:
-
+[3]
+processALine:
+
 ----write
-L[1, Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999]
-
+L[1, Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999]
+
 ----write
-[2, Book n, Loln, 2339]
-     
-all:
-getAllLines
-file exists
-"3"
-O"1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"
-"2","Book n","Loln","2339"
-     
-in all contains
-"3"
-Q["1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"]
-processLine:
-L[Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999, 1]
-buildObject:
-["2","Book n","Loln","2339"]
-processLine:
-[Book n, Loln, 2339, 2]
-buildObject:
-     
-	destroy:
-getLinesOtherThan:
-"3"
-"3"
-
+[2, Book n, Loln, 2339]
+     
+----2
+all:
+getAllLines
+file exists
+"3"
+O"1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"
+"2","Book n","Loln","2339"
+     
+in all contains
+"3"
+Q["1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"]
+processLine:
+L[Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999, 1]
+buildObject:
+["2","Book n","Loln","2339"]
+processLine:
+[Book n, Loln, 2339, 2]
+buildObject:
+     
+	destroy:
+getLinesOtherThan:
+"3"
+"3"
+
 ----write
-[3]
-processALine:
-
+[3]
+processALine:
+
 ----write
-L[1, Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999]
-all:
-getAllLines
-file exists
-"3"
-O"1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"
-     
-in all contains
-"3"
-Q["1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"]
-processLine:
-L[Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999, 1]
-buildObject:
-     
-find:
-	getLine:
-1
-count: 
-"3"
-O"1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"
-
+L[1, Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999]
+----3
+all:
+getAllLines
+file exists
+"3"
+O"1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"
+     
+in all contains
+"3"
+Q["1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"]
+processLine:
+L[Programming "Languages": Build,Prove,  and Compare, Norman Ramsey, 999, 1]
+buildObject:
+     
+----4
+find:
+jrails.Book.csv
+	getLine:
+1
+count: 
+"3"
+O"1","Programming "Languages": Build,Prove,  and Compare","Norman Ramsey","999"
+
 ^^^^found
-    
-lines.size()
-1
-processLine:
-buildObject:
+    
+lines.size()
+1
+processLine:
+buildObject:
+   
+	addRoute
+GET
+/
+java.lang.String
+index
+   
+   
+	getRoute
+GET
+/
    
 -------------
 BookView test
